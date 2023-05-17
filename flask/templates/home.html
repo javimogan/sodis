@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="product d-flex gap-3 justify-content-center">
+        <div>
+            <a class="btn btn-primary p-5" href="/add?name=Producto 1&price=43.5">
+                Producto 1
+                <br />
+                43.5€
+            </a>
+        </div>
+        <div>
+            <a class="btn btn-danger p-5" href="/add?name=Producto 2&price=20.0">
+                Producto 1
+                <br />
+                20.0€
+            </a>
+        </div>
+        <div>
+            <a class="btn btn-warning p-5" href="/add?name=Producto 3&price=2.3">
+                Producto 1
+                <br />
+                2.3€
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

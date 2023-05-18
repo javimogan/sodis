@@ -6,7 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 SESSION_TYPE = os.environ.get('SESSION_TYPE')
-IP = os.environ.get('DIR_IP')
+IP = '172.16.23.55'
+#os.environ.get('DIR_IP')
 # Create the Flask application
 app = Flask(__name__, template_folder="templates")
 app.secret_key = 'secret key'
@@ -27,7 +28,7 @@ if SESSION_TYPE == 'memcached':
 if SESSION_TYPE == 'filesystem':
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_USE_SIGNER'] = True
-    app.config['SESSION_FILE_DIR'] = "/tmp/flask_session"
+    app.config['SESSION_FILE_DIR'] = "/home/operador/sesiones"
 
 if SESSION_TYPE == 'sqlalchemy':
     app.config['SESSION_PERMANENT'] = True
@@ -40,7 +41,8 @@ if SESSION_TYPE == 'sqlalchemy':
     db.session.commit()
     app.config['SESSION_SQLALCHEMY'] = db
 # Create and initialize the Flask-Session object AFTER `app` has been configured
-Session(app)
+s = Session(app)
+#s.app.session_interface.db.create_all()
 
 @app.route("/")
 @app.route("/home")
